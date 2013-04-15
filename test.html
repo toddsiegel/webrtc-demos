@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<video id="rtcVideo"></video>
+		<script type="text/javascript">
+			var videoElement = document.getElementById("rtcVideo");
+
+			var success = function(localMediaStream) {
+				window.stream = localMediaStream;
+  				var video = document.querySelector("#rtcVideo");
+  				video.src = window.URL.createObjectURL(localMediaStream);
+  				video.play();
+			}
+
+			var error = function(err) {
+				alert('getUserMedia failed: Code ' + err.code);
+			}
+
+			navigator.webkitGetUserMedia({"video": true}, success, error);
+		</script>
+	</body>
+</html>
